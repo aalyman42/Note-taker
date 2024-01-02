@@ -6,6 +6,7 @@ const app = express();
 
 app.use(express.static("public"));
 app.use(express.json());
+app.use(express.urlencoded({ extended: true }));
 
 app.get("/", (req, res) =>
   res.sendFile(path.join(__dirname, "/public/index.html"))
@@ -20,8 +21,6 @@ app.get("/api/notes", (req, res) => {
 });
 
 app.post("/api/notes", (req, res) => {
-  console.log(req.body);
-
   const { title, text } = req.body;
 
   if (req.body) {
@@ -31,13 +30,15 @@ app.post("/api/notes", (req, res) => {
       } else {
         const parsedData = JSON.parse(data);
         parsedData.push(req.body);
-        console.log(parsedData);
+
         const stringData = JSON.stringify(parsedData);
-        console.log(stringData);
         fs.writeFile("./db/db.json", stringData, (err) =>
           err ? console.error(err) : console.info("success")
         );
-        res.json("successfully uploaded");
+        res.json({
+          title,
+          text,
+        });
       }
     });
   }
