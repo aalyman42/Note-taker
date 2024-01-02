@@ -20,41 +20,26 @@ app.get("/api/notes", (req, res) => {
 });
 
 app.post("/api/notes", (req, res) => {
-  const { title, text, id } = req.body;
+  console.log(req.body);
 
-  if (title && text && id) {
-    const newNote = {
-      title,
-      text,
-      id: uuid(),
-    };
+  const { title, text } = req.body;
 
-    const noteStringify = JSON.stringify(newNote);
-
-    fs.readFile("./db/db.json", "utf8", (err, data) => {
+  if (req.body) {
+    fs.readFile(`./db/db.json`, "utf8", (err, data) => {
       if (err) {
-        console.log(err);
+        console.error(err);
       } else {
-        const buildJson = JSON.parse(data);
-        buildJson.push(newNote);
+        const parsedData = JSON.parse(data);
+        const newData = parsedData.push(req.body);
+        console.log(newData);
         fs.writeFile(
           "./db/db.json",
-          JSON.stringify(buildJson, null, 4),
-          (err) => (err ? console.error(err) : console.log("success"))
+          newData,
+          err ? console.error(err) : console.info(`success`)
         );
+        res.json("successfully uploaded");
       }
     });
-
-    const response = {
-      status: "success",
-      body: newNote,
-    };
-
-    console.log(response);
-    res.status(201).json(response);
-  } else {
-    res.status(500).json("failed to post note");
   }
 });
-
 app.listen(3001, () => console.log("Now listening at http://localhost:3001"));
