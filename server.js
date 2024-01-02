@@ -25,17 +25,17 @@ app.post("/api/notes", (req, res) => {
   const { title, text } = req.body;
 
   if (req.body) {
-    fs.readFile(`./db/db.json`, "utf8", (err, data) => {
+    fs.readFile("./db/db.json", "utf8", (err, data) => {
       if (err) {
         console.error(err);
       } else {
         const parsedData = JSON.parse(data);
-        const newData = parsedData.push(req.body);
-        console.log(newData);
-        fs.writeFile(
-          "./db/db.json",
-          newData,
-          err ? console.error(err) : console.info(`success`)
+        parsedData.push(req.body);
+        console.log(parsedData);
+        const stringData = JSON.stringify(parsedData);
+        console.log(stringData);
+        fs.writeFile("./db/db.json", stringData, (err) =>
+          err ? console.error(err) : console.info("success")
         );
         res.json("successfully uploaded");
       }
