@@ -28,7 +28,6 @@ app.post("/api/notes", (req, res) => {
       text,
       id: uuidv4(),
     };
-    const noteString = JSON.stringify(newNote);
 
     fs.readFile("./db/db.json", "utf8", (err, data) => {
       if (err) {
@@ -59,4 +58,4 @@ app.get("/api/notes", (req, res) => {
   promiseRead("./db/db.json").then((data) => res.json(JSON.parse(data)));
 });
 
-app.listen(3001, () => console.log("Now listening at http://localhost:3001"));
+app.listen(PORT, () => console.log("Now listening at http://localhost:3001"));
