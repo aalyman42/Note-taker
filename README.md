@@ -10,6 +10,16 @@ Github repo: https://github.com/aalyman42/Note-taker
 
 Heroku deployment: https://note-taker-aalyman-ef38fc488bb3.herokuapp.com
 
+## Source Code & refrences
+
+    Source code provided by coding bootcamp, including public folder, db folder, and package.json.
+
+    source code found here: https://github.com/coding-boot-camp/miniature-eureka
+
+    reference for post request structure in bootcamp unit 11 mini project.
+
+    guidance toward creating a promisify fs.readfile from Jenny Nguyen.
+
 ## Screenshot
 
 ![screenshot](./public/assets/Capture.JPG)
