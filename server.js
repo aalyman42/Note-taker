@@ -4,6 +4,9 @@ const fs = require("fs");
 const db = require("./db/db.json");
 const app = express();
 const { v4: uuidv4 } = require("uuid");
+const util = require("util");
+const promiseRead = util.promisify(fs.readFile);
+
 app.use(express.static("public"));
 app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
@@ -47,12 +50,12 @@ app.post("/api/notes", (req, res) => {
     console.log(response);
     res.status(201).json(response);
   } else {
-    res.status(500).json("Error in posting review");
+    res.status(500).json("Error in posting note");
   }
 });
 
 app.get("/api/notes", (req, res) => {
-  return res.json(db);
+  promiseRead("./db/db.json").then((data) => res.json(JSON.parse(data)));
 });
 
 app.listen(3001, () => console.log("Now listening at http://localhost:3001"));

@@ -1,12 +1,27 @@
 [
-  {
-    "title": "now with id ",
-    "text": "id me please",
-    "id": "6ae752c7-3190-45b1-8c2a-8d806031c2c4"
-  },
-  {
-    "title": "another one",
-    "text": "added to the list",
-    "id": "139c4f54-6fb2-4d23-a581-4491c7e90b23"
-  }
+    {
+        "title": "now with id ",
+        "text": "id me please",
+        "id": "6ae752c7-3190-45b1-8c2a-8d806031c2c4"
+    },
+    {
+        "title": "another one",
+        "text": "added to the list",
+        "id": "139c4f54-6fb2-4d23-a581-4491c7e90b23"
+    },
+    {
+        "title": "the app was prebuilt lol",
+        "text": "we just did back end. save note should update the json, and also add this note to the left column",
+        "id": "be2c08c9-ec7e-4f12-8574-0bc98086e9e3"
+    },
+    {
+        "title": "please",
+        "text": "im gonna cry",
+        "id": "495bd664-c52e-4088-8a76-7d6510614bd2"
+    },
+    {
+        "title": "YYYYYYYYYYYYYYYYYYYYYEEEEEEE",
+        "text": "LETS GOOOOOOOOO\n",
+        "id": "93782f5b-985b-4e0d-be0b-fd75cc92f747"
+    }
 ]
