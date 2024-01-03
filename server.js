@@ -1,11 +1,12 @@
 const express = require("express");
 const path = require("path");
 const fs = require("fs");
-const db = require("./db/db.json");
 const app = express();
 const { v4: uuidv4 } = require("uuid");
 const util = require("util");
 const promiseRead = util.promisify(fs.readFile);
+
+const PORT = process.env.PORT || 3001;
 
 app.use(express.static("public"));
 app.use(express.json());
